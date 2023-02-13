@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-    backupGlobals="false"
-    backupStaticAttributes="false"
-    bootstrap="vendor/autoload.php"
-    colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    processIsolation="false"
-    stopOnFailure="false"
-    executionOrder="random"
-    failOnWarning="true"
-    failOnRisky="true"
-    failOnEmptyTestSuite="true"
-    beStrictAboutOutputDuringTests="true"
-    verbose="true"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+  backupGlobals="false"
+  backupStaticAttributes="false"
+  bootstrap="vendor/autoload.php"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  processIsolation="false"
+  stopOnFailure="false"
+  executionOrder="random"
+  failOnWarning="true"
+  failOnRisky="true"
+  failOnEmptyTestSuite="true"
+  beStrictAboutOutputDuringTests="true"
+  verbose="true"
 >
     <testsuites>
-        <testsuite name="VendorName Test Suite">
-            <directory>tests</directory>
+        <testsuite name="vagebond Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+        <testsuite name="Types">
+            <directory suffix="Test.php">./tests/Types</directory>
+        </testsuite>
+        <testsuite name="Processors">
+            <directory suffix="Test.php">./tests/Processors</directory>
+        </testsuite>
+        <testsuite name="Actions">
+            <directory suffix="Test.php">./tests/Actions</directory>
+        </testsuite>
+        <testsuite name="Values">
+            <directory suffix="Test.php">./tests/Values</directory>
         </testsuite>
     </testsuites>
     <coverage>
