@@ -1,24 +1,27 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "vagebond/runtype",
+    "description": "A runtime Laravel Typescript generator",
     "keywords": [
-        ":vendor_name",
+        "vagebond",
         "laravel",
-        ":package_slug"
+        "runtype"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/vagebnd/runtype",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Gianluca Riggio",
+            "email": "luca@maximumawesome.nl",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
+        "doctrine/dbal": "^3.4",
+        "illuminate/contracts": "^9.0",
+        "nikic/php-parser": "^4.15",
         "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^9.0"
+        "symfony/process": "^6.1"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -31,17 +34,17 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "spatie/temporary-directory": "^2.1"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Vagebond\\Runtype\\": "src",
+            "Vagebond\\Runtype\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Vagebond\\Runtype\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Vagebond\\Runtype\\RuntypeServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Runtype": "Vagebond\\Runtype\\Facades\\Runtype"
             }
         }
     },
