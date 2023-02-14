@@ -3,6 +3,7 @@
 use Vagebond\Runtype\Converters\ResourceConverter;
 use Vagebond\Runtype\Processors\ResourceProcessor;
 use Vagebond\Runtype\Tests\Fakes\Resources\ProductResource;
+use Vagebond\Runtype\Tests\Fakes\Resources\ProductResourceCollection;
 use Vagebond\Runtype\Tests\Fakes\Resources\ValueResource;
 use Vagebond\Runtype\Values\TypescriptType;
 
@@ -20,6 +21,20 @@ it('can convert resources with value objects', function () {
     $processed = (new ResourceConverter(getConfig()))->convert($instance);
 
     expect($processed)->toBeInstanceOf(TypescriptType::class);
+});
+
+it('can convert resource collections', function () {
+    $instance = (new ResourceProcessor(getConfig()))->process(ProductResourceCollection::class);
+    $processed = (new ResourceConverter(getConfig()))->convert($instance);
+
+    expect($processed)->toBeInstanceOf(TypescriptType::class);
+    expect($processed->getName())->toBe('ProductResourceCollectionType');
+    expect($processed->listProperties())->toHaveCount(1);
+
+    $property = $processed->listProperties()->first();
+
+    expect($property->getName())->toBe('data');
+    expect($property->getType())->toBe('ProductResourceType[]');
 });
 
 // TODO: Add tests for modifiers.

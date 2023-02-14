@@ -2,6 +2,8 @@
 
 namespace Vagebond\Runtype\Processors;
 
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use ReflectionClass;
 use Vagebond\Runtype\Actions\ProcessEntities;
 use Vagebond\Runtype\Actions\ResolveMixinFromClass;
 use Vagebond\Runtype\Contracts\Processable;
@@ -18,8 +20,17 @@ class ResourceProcessor implements Processable
     {
         $mixinClass = (new ResolveMixinFromClass)->handle($class);
 
-        $valueInstance = (new ProcessEntities($this->config))->handle([$mixinClass])->first();
+        $valueInstance = (new ProcessEntities($this->config))->handle([$mixinClass]);
 
-        return $class::make($valueInstance);
+        if (! $this->isResourceCollection($class)) {
+            return $class::make($valueInstance->first());
+        }
+
+        return $class::make($valueInstance->values());
+    }
+
+    private function isResourceCollection(string $class): bool
+    {
+        return (new ReflectionClass($class))->isSubclassOf(ResourceCollection::class);
     }
 }

@@ -6,6 +6,7 @@ use Vagebond\Runtype\Processors\ResourceProcessor;
 use Vagebond\Runtype\Tests\Actions\Stubs\MissingMixinResource;
 use Vagebond\Runtype\Tests\Actions\Stubs\MissingModelResource;
 use Vagebond\Runtype\Tests\Fakes\Resources\FeatureResource;
+use Vagebond\Runtype\Tests\Fakes\Resources\ProductResourceCollection;
 use Vagebond\Runtype\Tests\Fakes\Resources\ValueResource;
 
 it('can process resources', function ($class) {
@@ -15,6 +16,7 @@ it('can process resources', function ($class) {
 })->with(function () {
     yield FeatureResource::class;
     yield ValueResource::class;
+    yield ProductResourceCollection::class;
 });
 
 it('throws an error when a resource does not have a mixin', function () {
