@@ -8,8 +8,8 @@ use Vagebond\Runtype\Tests\Fakes\Resources\ProductResource;
 it('can resolve processable entities based on the config', function () {
     $config = getConfig()
         ->autoDiscoverPaths([
-            __DIR__ . '/../Fakes/Resources',
-            __DIR__ . '/../Fakes/Models',
+            __DIR__.'/../Fakes/Resources',
+            __DIR__.'/../Fakes/Models',
         ]);
 
     $entities = (new ResolveProcessableEntities(new Finder, $config))->handle();

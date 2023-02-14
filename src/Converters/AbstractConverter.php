@@ -72,6 +72,7 @@ abstract class AbstractConverter
     private function getModifiers($instance)
     {
         $modifiers = array_merge($this->modifiers, [$this->config->getModifier($instance::class)]);
+
         return array_filter($modifiers);
     }
 }

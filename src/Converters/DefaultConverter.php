@@ -10,9 +10,9 @@ class DefaultConverter extends AbstractConverter
     protected function handle($instance): TypescriptType
     {
         if ($instance instanceof ReflectionClass) {
-            return (new TypescriptType($instance->getName()));
+            return new TypescriptType($instance->getName());
         }
 
-        return (new TypescriptType(get_class($instance)));
+        return new TypescriptType(get_class($instance));
     }
 }
