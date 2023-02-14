@@ -18,9 +18,9 @@ class ResourceProcessor implements Processable
 
     public function process(string $class)
     {
-        $mixinClass = (new ResolveMixinFromClass)->handle($class);
+        $resolvedClass = (new ResolveMixinFromClass)->handle($class);
 
-        $valueInstance = (new ProcessEntities($this->config))->handle([$mixinClass]);
+        $valueInstance = (new ProcessEntities($this->config))->handle([$resolvedClass]);
 
         if (! $this->isResourceCollection($class)) {
             return $class::make($valueInstance->first());
