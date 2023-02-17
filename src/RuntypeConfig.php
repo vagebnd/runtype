@@ -21,6 +21,8 @@ class RuntypeConfig
 
     private array $modifiers = [];
 
+    private array $hooks = [];
+
     public static function make(): self
     {
         return new self();
@@ -64,6 +66,13 @@ class RuntypeConfig
     public function modifiers(array $modifiers): self
     {
         $this->modifiers = $modifiers;
+
+        return $this;
+    }
+
+    public function hooks(array $hooks): self
+    {
+        $this->hooks = $hooks;
 
         return $this;
     }
@@ -125,5 +134,12 @@ class RuntypeConfig
         }
 
         return $modifier;
+    }
+
+    public function getHooks(): array
+    {
+        return collect($this->hooks)
+            ->map(fn ($hook) => app($hook))
+            ->toArray();
     }
 }

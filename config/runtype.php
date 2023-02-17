@@ -18,6 +18,20 @@ return [
     ],
 
     /**
+     * Hooks allow you to add custom logic to the generation process
+     * Each hook must implement the Vagebond\Runtype\Contracts\Hookable interface
+     *
+     * i.e. you can use the before hook to setup specific settings for your environment
+     * like logging in a user, setting a tenant etc.
+     *
+     * You can also use the after hook to do some cleanup or to format the generated
+     * typescript file
+     */
+    'hooks' => [
+        // 'App\Hooks\SetupEnvironmentHook',
+    ],
+
+    /**
      * Indicate how you would like your entities to be processed
      * you can choose a subclass or an interface
      */

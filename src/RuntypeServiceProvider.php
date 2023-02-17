@@ -27,6 +27,7 @@ class RuntypeServiceProvider extends PackageServiceProvider
                 ->processors(config('runtype.processors'))
                 ->converters(config('runtype.converters'))
                 ->modifiers(config('runtype.modifiers'))
+                ->hooks(config('runtype.hooks'))
                 ->outputFile(config('runtype.output_file'))
                 ->typeReplacements(config('runtype.type_replacements'))
         );
