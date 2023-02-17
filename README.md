@@ -7,6 +7,8 @@
 
 Runtype is a library that you can use to generate types for Laravel Resources, models and other classes.
 
+For more information, head over to the [docs](https://runtype.vagebond.nl/)
+
 ## Installation
 
 You can install the package via composer:
