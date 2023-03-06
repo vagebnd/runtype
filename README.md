@@ -5,14 +5,46 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vagebnd/runtype/fix-php-code-style-issues.yml?branch=main)](https://github.com/vagebnd/runtype/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/vagebond/runtype.svg?style=flat-square)](https://packagist.org/packages/vagebond/runtype)
 
-Runtype is a library that you can use to generate types for Laravel Resources, models and other classes.
+This package allow you to convert Laravel Models & Resources into Typescript interfaces.
+
+This resource:
+```PHP
+use Illuminate\Http\Resources\Json\JsonResource;
+
+/** @mixin \App\Models\Product */
+class ProductResource extends JsonResource
+{
+    public $showHiddenData = false;
+
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'hidden' => $this->when($this->showHiddenData, false),
+        ];
+    }
+}
+```
+
+will be converted into this interface:
+
+```typescript
+export interface ProductResourceType {
+    id: number;
+    name: string;
+    hidden?: boolean;
+}
+```
+
+You can read the full documentation [here](https://runtype.vagebond.nl/).
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require vagebond/runtype
+composer require vagebond/runtype --dev
 ```
 
 You can publish the config file with:
