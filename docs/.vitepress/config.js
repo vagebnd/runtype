@@ -3,6 +3,7 @@ export default {
   description: 'RunType documentation',
   cleanUrls: true,
   lastUpdated: true,
+
   themeConfig: {
     sidebar: [
       {
@@ -17,5 +18,7 @@ export default {
         ],
       },
     ],
+
+    socialLinks: [{ icon: 'github', link: 'https://github.com/vagebnd/runtype' }],
   },
 }
