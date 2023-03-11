@@ -1,6 +1,6 @@
 # Introduction
 
-This package allow you to convert Laravel Models & Resources into Typescript interfaces.
+This package allows you to generate Typescript interfaces from your Laravel Models & Resources.
 
 This resource:
 
@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
 
 ```
 
-will be converted into this interface:
+will generate this Typescript interface:
 
 ```typescript
 export interface ProductResourceType {
