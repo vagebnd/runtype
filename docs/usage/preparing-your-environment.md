@@ -1,6 +1,7 @@
-# Hooks
+# Preparing your environment
 
-Hooks allow you to add custom logic to the generation process.
+## Hooks
+Runtype Hooks allow you to add custom logic to the Typescript generation process.
 
 A hook has 2 methods: `before` and `after`. The `before` method is called before the generation process starts. The `after` method is called after the generation process is finished.
 
@@ -35,7 +36,7 @@ class MyHook implements Hookable
 
 ## When to use a hook
 
-There are instances when your resources depend on a logged in user or a specific tenant. In these cases you can use a hook to setup the environment before the generation process starts.
+There are instances when your resources depend on a logged-in user or a specific tenant. In these cases you can use a hook to setup the environment before the generation process starts.
 
 ```php
 class SetupEnvironmentHook implements Hookable

@@ -1,9 +1,9 @@
 # Processors
 
-We use processors to determine how we should process a given entity.
+Runtype for Laravel uses processors to determine how we should process a given entity.
 Let's illustrate this with an example.
 
-Because RunType generates types at runtime, we need to know how to process a given entity.
+Because RunType generates Typescript types at runtime, we need to know how to process a given entity.
 By default, RunType ships with 3 processors:
 
 - `DefaultProcessor` (which is used for all entities that don't have a specific processor)

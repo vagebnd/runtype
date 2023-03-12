@@ -1,24 +1,44 @@
-# Installation
+# Getting started
+
+## Try it online
+Coming soon
+
+## Prequisites
+
+- [PHP](https://php.net/) version 8.0 or higher.
+- [Laravel](https://laravel.com/) version 9.0 or higher.
+- Terminal for accessing Runtype via the Laravel command line interface (CLI - Artisan).
+
+## Installation
 
 You can install this package via composer:
 
-```bash
-composer require vagebond/runtype
+::: code-group
+```sh [composer]
+$ composer require vagebond/runtype
 ```
+:::
 
-To generate the typescript file run:
+### Usage
 
-```bash
-php artisan runtype:generate
+To instruct Laravel Runtype to generate a Typescript file, run the following command in your terminal:
+::: code-group
+```sh [artisan]
+$ php artisan runtype:generate
 ```
+:::
 
-You can publish the config file with:
+### Configuration
 
-```bash
-php artisan vendor:publish --tag="runtype-config"
+You can publish the Runtype config file with:
+
+::: code-group
+```sh [artisan]
+$ php artisan vendor:publish --tag="runtype-config"
 ```
+:::
 
-This is the default content of the config file:
+The default configuration file for Runtype looks like this:
 
 ```php
 <?php

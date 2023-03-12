@@ -7,21 +7,32 @@ const links = []
 
 export default {
   title: 'RunType',
-  description: 'RunType documentation',
+  description: 'Generate Typescript from Laravel Resources and Models',
+
   cleanUrls: true,
   lastUpdated: true,
 
   themeConfig: {
+    nav: [{ text: 'Guide', link: '/introduction/what-is-runtype' }],
+
     sidebar: [
       {
+        text: 'Introduction',
+        collapsed: false,
         items: [
-          { text: 'Introduction', link: '/' },
-          { text: 'Installation', link: '/installation' },
-          { text: 'Processors', link: '/processors' },
-          { text: 'Converters', link: '/converters' },
-          { text: 'Modifiers', link: '/modifiers' },
-          { text: 'Type replacements', link: '/type-replacements' },
-          { text: 'Hooks', link: '/hooks' },
+          { text: 'What is RunType?', link: '/introduction/what-is-runtype' },
+          { text: 'Getting started', link: '/introduction/getting-started' },
+        ],
+      },
+      {
+        text: 'Usage',
+        collapsed: false,
+        items: [
+          { text: 'Processors', link: '/usage/processing-entities' },
+          { text: 'Converters', link: '/usage/converting-entities-into-typescript' },
+          { text: 'Modifiers', link: '/usage/modifying-resources' },
+          { text: 'Type replacements', link: '/usage/replacing-types-for-typescript' },
+          { text: 'Preparing your environment', link: '/usage/preparing-your-environment' },
         ],
       },
     ],

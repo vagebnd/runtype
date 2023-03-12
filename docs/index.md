@@ -1,35 +1,26 @@
-# Introduction
+---
+layout: home
 
-This package allows you to generate Typescript interfaces from your Laravel Models & Resources.
+title: Laravel Runtype
+titleTemplate: A Laravel package to generate Typescript interfaces from your Models & Resources
 
-This resource:
+hero:
+  name: Laravel Runtype
+  text: A typescript generator for Laravel
+  tagline: A Laravel package to generate Typescript interfaces from your Models & Resources
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /introduction/what-is-runtype
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/vagebnd/runtype
 
-```php
-use Illuminate\Http\Resources\Json\JsonResource;
-
-/** @mixin \App\Models\Product */
-class ProductResource extends JsonResource
-{
-    public $showHiddenData = false;
-
-    public function toArray($request)
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'hidden' => $this->when($this->showHiddenData, false),
-        ];
-    }
-}
-
-```
-
-will generate this Typescript interface:
-
-```typescript
-export interface ProductResourceType {
-    id: number;
-    name: string;
-    hidden?: boolean;
-}
-```
+features:
+  - title: Prevent out of sync types
+    details: Runtype will generate typescript interfaces from your models and resources, so you don't have to worry about keeping them in sync.
+  - title: Easy to customize
+    details: Adding custom types is easy, and you can even add custom logic to the generation process.
+  - title: Fully tested
+    details: Runtype for Laravel is fully tested, so you can be sure that it will work as expected.
+---

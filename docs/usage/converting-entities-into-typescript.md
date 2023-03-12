@@ -1,6 +1,6 @@
 # Converters
 
-Converters are responsible for converting a given entity into a Typescript type.
+Runtype Converters are responsible for converting a given entity into a Typescript interface.
 
 RunType ships with 3 converters:
 - `DefaultConverter` (which is used for all entities that don't have a specific converter)

@@ -1,6 +1,6 @@
 # Modifiers
 
-Modifiers enable you to set properties on a resource or model that we can't detect automatically.
+Modifiers enable you to set properties on a Laravel Resource or model that we can't detect automatically.
 
 Consider the following example:
 
