@@ -1,10 +1,12 @@
 {
     "name": "vagebond/runtype",
-    "description": "A runtime Laravel Typescript generator",
+    "description": "Transform Laravel Resources and models into Typescript interfaces",
     "keywords": [
         "vagebond",
         "laravel",
-        "runtype"
+        "runtype",
+        "typescript",
+        "generator"
     ],
     "homepage": "https://github.com/vagebnd/runtype",
     "license": "MIT",
