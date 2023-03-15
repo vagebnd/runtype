@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vagebnd/runtype/fix-php-code-style-issues.yml?branch=main)](https://github.com/vagebnd/runtype/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/vagebond/runtype.svg?style=flat-square)](https://packagist.org/packages/vagebond/runtype)
 
-This package allow you to convert Laravel Models & Resources into Typescript interfaces.
+Generate TypeScript interfaces from Laravel Models & Resources
 
 This resource:
 ```PHP
