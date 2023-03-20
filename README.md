@@ -1,4 +1,4 @@
-# Laravel Runtype
+# Laravel Typescript Generator: Runtype
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vagebond/runtype.svg?style=flat-square)](https://packagist.org/packages/vagebond/runtype)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vagebnd/runtype/run-tests.yml?branch=main&label=tests)](https://github.com/vagebnd/runtype/actions?query=workflow%3Arun-tests+branch%3Amain)
