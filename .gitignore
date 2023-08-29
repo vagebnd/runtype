@@ -13,3 +13,6 @@ node_modules
 deploy.sh
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+# OS generated files
+.DS_Store
