@@ -1,9 +1,10 @@
 <?php
 
-use function Pest\Laravel\artisan;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 use Vagebond\Runtype\Runtype;
 use Vagebond\Runtype\Tests\Fakes\Hooks\TestHook;
+
+use function Pest\Laravel\artisan;
 
 beforeEach(function () {
     $this->temporaryDirectory = (new TemporaryDirectory())->create();
