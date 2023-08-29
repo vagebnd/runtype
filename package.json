@@ -22,6 +22,14 @@
     "singleQuote": true,
     "semi": false,
     "arrowParens": "always",
-    "quoteProps": "consistent"
+    "quoteProps": "consistent",
+    "overrides": [
+      {
+        "files": "composer.json",
+        "options": {
+          "tabWidth": 4
+        }
+      }
+    ]
   }
 }
