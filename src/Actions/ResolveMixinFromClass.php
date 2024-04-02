@@ -2,6 +2,7 @@
 
 namespace Vagebond\Runtype\Actions;
 
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\UseUse;
 use PhpParser\NodeFinder;
 use PhpParser\ParserFactory;
@@ -58,7 +59,7 @@ class ResolveMixinFromClass
 
     private function tryResolvingFromImports(ReflectionClass $classReflection, $model)
     {
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $parser = (new ParserFactory())->createForNewestSupportedVersion();
 
         $statements = $parser->parse(file_get_contents($classReflection->getFileName()));
 
@@ -70,8 +71,10 @@ class ResolveMixinFromClass
         );
 
         $imports = collect($useStatements)
-            ->pluck('name.parts')
-            ->mapWithKeys(fn (array $parts) => [end($parts) => implode('\\', $parts)]);
+            ->pluck('name')
+            ->mapWithKeys(function (Name $name) {
+                return [basename(str_replace('\\', '/', $name->name)) => $name->name];
+            });
 
         return $imports->get($model, $model);
     }
