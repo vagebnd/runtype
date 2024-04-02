@@ -23,12 +23,12 @@ it('can process entities', function (string $class) {
 
     expect($type)->toBeInstanceOf(TypescriptType::class);
 })
-->with(function () {
-    yield Category::class;
-    yield ProductResource::class;
-    yield TestValue::class;
-    yield ValueResource::class;
-});
+    ->with(function () {
+        yield Category::class;
+        yield ProductResource::class;
+        yield TestValue::class;
+        yield ValueResource::class;
+    });
 
 it('can use custom modifiers', function () {
     $processed = (new ProcessEntities($this->config))->handle([FeatureResource::class]);

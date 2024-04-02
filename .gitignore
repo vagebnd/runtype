@@ -1,5 +1,7 @@
 .idea
 .phpunit.result.cache
+.phpunit.cache
+phpunit.xml.dist.bak
 build
 composer.lock
 coverage
@@ -13,3 +15,6 @@ node_modules
 deploy.sh
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+# OS generated files
+.DS_Store

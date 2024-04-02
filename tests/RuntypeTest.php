@@ -4,6 +4,8 @@ use Spatie\TemporaryDirectory\TemporaryDirectory;
 use Vagebond\Runtype\Runtype;
 use Vagebond\Runtype\Tests\Fakes\Hooks\TestHook;
 
+use function Pest\Laravel\artisan;
+
 beforeEach(function () {
     $this->temporaryDirectory = (new TemporaryDirectory())->create();
 
@@ -16,6 +18,14 @@ it('works', function () {
 
     expect($this->temporaryDirectory->path('runtype.d.ts'))->toBeFile();
     // TODO: Validate contents with snapshot.
+});
+
+it('can call the command', function () {
+    (new Runtype($this->config))->generate();
+
+    artisan('runtype:generate')->assertExitCode(0);
+
+    expect($this->temporaryDirectory->path('runtype.d.ts'))->toBeFile();
 });
 
 it('can hook into the process', function () {

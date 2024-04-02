@@ -24,7 +24,7 @@ class ConvertEntities
             ->filter(function (string $converter, string $entityClass) use ($entity) {
                 return is_subclass_of($entity, $entityClass);
             })
-           ->first(default: $this->getDefaultConverter());
+            ->first(default: $this->getDefaultConverter());
 
         return (new $converter($this->config))->convert($entity);
     }
