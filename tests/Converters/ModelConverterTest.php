@@ -6,7 +6,7 @@ use Vagebond\Runtype\Tests\Fakes\Models\Product;
 use Vagebond\Runtype\Values\TypescriptType;
 
 it('can convert models', function () {
-    $instance = (new ModelProcessor())->process(Product::class);
+    $instance = (new ModelProcessor)->process(Product::class);
     $processed = (new ModelConverter(getConfig()))->convert($instance);
 
     expect($processed)->toBeInstanceOf(TypescriptType::class);

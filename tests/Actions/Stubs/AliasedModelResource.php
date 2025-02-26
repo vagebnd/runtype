@@ -6,6 +6,4 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Vagebond\Runtype\Tests\Fakes\Models\Product;
 
 /** @mixin Product */
-class AliasedModelResource extends JsonResource
-{
-}
+class AliasedModelResource extends JsonResource {}

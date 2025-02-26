@@ -14,8 +14,7 @@ final class Types
 {
     public function __construct(
         private RuntypeConfig $config
-    ) {
-    }
+    ) {}
 
     public const ANY = 'any';
 

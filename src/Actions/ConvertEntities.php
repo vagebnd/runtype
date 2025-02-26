@@ -10,8 +10,7 @@ class ConvertEntities
 {
     public function __construct(
         private RuntypeConfig $config,
-    ) {
-    }
+    ) {}
 
     public function handle(Collection $entities)
     {

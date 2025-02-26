@@ -9,6 +9,5 @@ class TestValue
     public function __construct(
         public string $name,
         public int $value,
-    ) {
-    }
+    ) {}
 }

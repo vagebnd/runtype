@@ -2,6 +2,4 @@
 
 namespace Vagebond\Runtype\Tests\Fakes\Resources;
 
-class NotAResource
-{
-}
+class NotAResource {}

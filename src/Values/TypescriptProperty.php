@@ -14,8 +14,7 @@ class TypescriptProperty
         private string $name,
         private string $type,
         private bool $optional = false,
-    ) {
-    }
+    ) {}
 
     public static function fromValue(string $key, mixed $value): self
     {

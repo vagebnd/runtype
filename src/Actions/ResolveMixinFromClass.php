@@ -59,7 +59,7 @@ class ResolveMixinFromClass
 
     private function tryResolvingFromImports(ReflectionClass $classReflection, $model)
     {
-        $parser = (new ParserFactory())->createForNewestSupportedVersion();
+        $parser = (new ParserFactory)->createForNewestSupportedVersion();
 
         $statements = $parser->parse(file_get_contents($classReflection->getFileName()));
 

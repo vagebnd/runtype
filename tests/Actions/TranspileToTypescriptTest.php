@@ -15,10 +15,10 @@ it('can transpile to typescript', function () {
     $type->addProperty(TypescriptProperty::fromValue('name', 'string'));
     $type->addProperty(TypescriptProperty::fromValue('price', 1.1));
     $type->addProperty(TypescriptProperty::fromValue('created_at', now()));
-    $type->addProperty(TypescriptProperty::fromValue('category', new CategoryResource(new Category())));
+    $type->addProperty(TypescriptProperty::fromValue('category', new CategoryResource(new Category)));
     $type->addProperty(TypescriptProperty::fromValue('features', FeatureResource::collection([])));
 
-    $generated = (new TranspileToTypescript())->handle(collect([$type]));
+    $generated = (new TranspileToTypescript)->handle(collect([$type]));
     $lines = explode(PHP_EOL, $generated);
 
     expect($lines)->toContain('export type ProductResourceType = {');
@@ -32,7 +32,7 @@ it('can transpile to typescript', function () {
 it('can handle types with no properties', function () {
     $type = new TypescriptType(ProductResource::class);
 
-    $generated = (new TranspileToTypescript())->handle(collect([$type]));
+    $generated = (new TranspileToTypescript)->handle(collect([$type]));
     $lines = explode(PHP_EOL, $generated);
 
     expect($lines)->toContain('export type ProductResourceType = any');

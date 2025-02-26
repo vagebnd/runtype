@@ -13,7 +13,7 @@ it('can determine a type from a value', function ($value, $expected) {
     [-1, 'number'],
     [1.1, 'number'],
     [now(), 'string'],
-    [new ProductResource(new Product()), 'ProductResourceType'],
+    [new ProductResource(new Product), 'ProductResourceType'],
     [[1, 2, 3], 'number[]'],
     [['name' => 'name', 'value' => 1], '{name:string,value:number}'],
     [['name' => 'name', 'values' => ['name' => 'value']], '{name:string,values:{name:string}}'],

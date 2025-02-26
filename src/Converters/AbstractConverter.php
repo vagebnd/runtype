@@ -18,8 +18,7 @@ abstract class AbstractConverter
 
     final public function __construct(
         protected RuntypeConfig $config
-    ) {
-    }
+    ) {}
 
     abstract protected function handle($instance): TypescriptType;
 

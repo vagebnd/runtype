@@ -11,8 +11,7 @@ class ProcessEntities
 {
     public function __construct(
         private RuntypeConfig $config,
-    ) {
-    }
+    ) {}
 
     public function handle(array $classes = []): Collection
     {

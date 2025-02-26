@@ -13,8 +13,7 @@ class ResourceProcessor implements Processable
 {
     public function __construct(
         protected RuntypeConfig $config
-    ) {
-    }
+    ) {}
 
     public function process(string $class)
     {

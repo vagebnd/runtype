@@ -4,7 +4,7 @@ use Spatie\TemporaryDirectory\TemporaryDirectory;
 use Vagebond\Runtype\Actions\PersistTypescriptTypes;
 
 beforeEach(function () {
-    $this->temporaryDirectory = (new TemporaryDirectory())->create();
+    $this->temporaryDirectory = (new TemporaryDirectory)->create();
     $this->action = new PersistTypescriptTypes(
         getConfig()
             ->outputFile($this->temporaryDirectory->path('runtype.d.ts'))

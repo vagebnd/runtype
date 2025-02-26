@@ -12,8 +12,7 @@ class ResolveProcessableEntities
     public function __construct(
         private Finder $finder,
         private RuntypeConfig $config,
-    ) {
-    }
+    ) {}
 
     public function handle(array $types = [])
     {
@@ -41,7 +40,7 @@ class ResolveProcessableEntities
 
         foreach ($this->finder->in($paths) as $fileInfo) {
             try {
-                $classes = (new ResolveClassesInPhpFile())->handle($fileInfo);
+                $classes = (new ResolveClassesInPhpFile)->handle($fileInfo);
 
                 foreach ($classes as $name) {
                     $rc = new ReflectionClass($name);

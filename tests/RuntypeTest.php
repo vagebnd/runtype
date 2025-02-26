@@ -7,7 +7,7 @@ use Vagebond\Runtype\Tests\Fakes\Hooks\TestHook;
 use function Pest\Laravel\artisan;
 
 beforeEach(function () {
-    $this->temporaryDirectory = (new TemporaryDirectory())->create();
+    $this->temporaryDirectory = (new TemporaryDirectory)->create();
 
     $this->config = getConfig()
         ->outputFile($this->temporaryDirectory->path('runtype.d.ts'));
