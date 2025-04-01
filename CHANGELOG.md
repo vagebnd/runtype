@@ -2,6 +2,10 @@
 
 All notable changes to `runtype` will be documented in this file.
 
+## Added support for request user resolving in resources - 2025-04-01
+
+This updated binds the user to the request when present, allowing us to do checks based on the user in resources.
+
 ## Updated PHP-parser to latest version - 2024-04-02
 
 ### What's Changed
