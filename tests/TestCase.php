@@ -9,6 +9,7 @@ use Vagebond\Runtype\RuntypeServiceProvider;
 use Vagebond\Runtype\Tests\Fakes\Models\Category;
 use Vagebond\Runtype\Tests\Fakes\Models\Feature;
 use Vagebond\Runtype\Tests\Fakes\Models\Product;
+use Vagebond\Runtype\Tests\Fakes\Models\User;
 
 class TestCase extends Orchestra
 {
@@ -20,6 +21,8 @@ class TestCase extends Orchestra
 
     private function buildWorld()
     {
+        User::factory()->create();
+
         Product::factory()
             ->for(Category::factory())
             ->has(Feature::factory())
@@ -54,6 +57,16 @@ class TestCase extends Orchestra
      */
     public function migrateDatabase()
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
