@@ -2,6 +2,10 @@
 
 All notable changes to `runtype` will be documented in this file.
 
+## Ensure optional types are processed correctly - 2025-05-27
+
+This update ensures that optional types are correctly added to the export i.e. `name?: boolean`.
+
 ## Added support for request user resolving in resources - 2025-04-01
 
 This updated binds the user to the request when present, allowing us to do checks based on the user in resources.
