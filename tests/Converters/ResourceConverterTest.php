@@ -3,6 +3,8 @@
 use Vagebond\Runtype\Converters\ResourceConverter;
 use Vagebond\Runtype\Processors\ResourceProcessor;
 use Vagebond\Runtype\Tests\Fakes\Models\User;
+use Vagebond\Runtype\Tests\Fakes\Modifiers\FeatureModifier;
+use Vagebond\Runtype\Tests\Fakes\Resources\FeatureResource;
 use Vagebond\Runtype\Tests\Fakes\Resources\ProductResource;
 use Vagebond\Runtype\Tests\Fakes\Resources\ProductResourceCollection;
 use Vagebond\Runtype\Tests\Fakes\Resources\UserResource;
@@ -55,4 +57,19 @@ it('can convert resources that use the user bound to the request', function () {
     expect($userBoundProperty->getType())->toBe('{edit:boolean}');
 });
 
-// TODO: Add tests for modifiers.
+it('can detect optional properties', function () {
+    $config = getConfig();
+    $config->modifiers([
+        FeatureResource::class => FeatureModifier::class,
+    ]);
+
+    $instance = (new ResourceProcessor($config))->process(FeatureResource::class);
+    $processed = (new ResourceConverter($config))->convert($instance);
+
+    expect($processed->getName())->toBe('FeatureResourceType');
+
+    $modifiedProperty = $processed->listProperties()->last();
+
+    expect($modifiedProperty->getName())->toBe('hidden?');
+    expect($modifiedProperty->getType())->toBe('boolean');
+});

@@ -43,7 +43,7 @@ abstract class AbstractConverter
             $instance = app($modifier)->modify($instance);
             $modifiedType = app(static::class)->handle($instance);
 
-            $type = $type->merge($modifiedType);
+            $type = $type->merge($modifiedType, $type->listProperties());
         }
 
         return $type;

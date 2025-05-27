@@ -45,5 +45,5 @@ it('can use custom modifiers', function () {
 
     $hiddenProperty = $type->listProperties()->last();
 
-    expect($hiddenProperty->getName())->toBe('hidden');
+    expect($hiddenProperty->getName())->toBe('hidden?');
 });

@@ -50,8 +50,10 @@ it('can merge a type', function () {
         ),
     ]);
 
-    $type = $type->merge($mergeType);
+    $type = $type->merge($mergeType, $type->listProperties());
 
-    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'address'))->not->toBeNull();
-    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'age?')->isOptional())->toBeTrue();
+    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'address?'))->not->toBeNull();
+    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'address?')->isOptional())->toBeTrue();
+    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'age')->isOptional())->toBeFalse();
+    expect($type->listProperties()->firstWhere(fn ($property) => $property->getName() === 'name')->isOptional())->toBeFalse();
 });

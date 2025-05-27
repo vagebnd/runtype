@@ -45,7 +45,7 @@ class TypescriptType
         return $this->class;
     }
 
-    public function merge(TypescriptType $type): self
+    public function merge(TypescriptType $type, Collection $originalProperties): self
     {
         $newProperties = $type->listProperties()
             ->filter(fn ($prop) => ! $this->listProperties()->contains($prop));
@@ -53,7 +53,7 @@ class TypescriptType
         $this->addProperties($newProperties);
 
         $optionalProperties = $this->listProperties()
-            ->filter(fn ($prop) => ! $type->listProperties()->contains($prop));
+            ->filter(fn ($prop) => ! $originalProperties->contains($prop));
 
         $optionalProperties->each(fn ($prop) => $prop->setOptional(true));
 
