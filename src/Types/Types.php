@@ -66,6 +66,6 @@ final class Types
 
     private function processEnum(\BackedEnum $value)
     {
-        return join(' | ', Arr::map(array_column($value::cases(), 'value'), fn ($val) => is_string($val) ? "'$val'" : $val));
+        return implode(' | ', Arr::map(array_column($value::cases(), 'value'), fn ($val) => is_string($val) ? "'$val'" : $val));
     }
 }
