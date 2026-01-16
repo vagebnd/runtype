@@ -2,6 +2,10 @@
 
 All notable changes to `runtype` will be documented in this file.
 
+## Added Enum support - 2026-01-16
+
+Added enum support by @rick-bongers.
+
 ## Ensure optional types are processed correctly - 2025-05-27
 
 This update ensures that optional types are correctly added to the export i.e. `name?: boolean`.
