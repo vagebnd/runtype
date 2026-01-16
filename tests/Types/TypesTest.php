@@ -1,5 +1,6 @@
 <?php
 
+use Vagebond\Runtype\Tests\Fakes\Enums\TestEnum;
 use Vagebond\Runtype\Tests\Fakes\Models\Product;
 use Vagebond\Runtype\Tests\Fakes\Resources\ProductResource;
 use Vagebond\Runtype\Types\Types;
@@ -18,4 +19,5 @@ it('can determine a type from a value', function ($value, $expected) {
     [['name' => 'name', 'value' => 1], '{name:string,value:number}'],
     [['name' => 'name', 'values' => ['name' => 'value']], '{name:string,values:{name:string}}'],
     [(object) ['name' => 'name', 'value' => 1], '{name:string,value:number}'],
+    [TestEnum::VALUE_1, '\'enum-value-1\' | \'enum-value-2\''],
 ]);

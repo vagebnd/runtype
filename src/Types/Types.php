@@ -40,6 +40,7 @@ final class Types
             is_int($value) => self::NUMBER,
             is_float($value) => self::NUMBER,
             is_array($value) => $this->processArray($value),
+            $value instanceof \BackedEnum => $this->processEnum($value),
             $value instanceof ResourceCollection => TypescriptType::determineName($value->collects).'[]',
             $value instanceof JsonResource => TypescriptType::determineName(get_class($value)),
             $value instanceof Arrayable => $this->processArray($value->toArray()), // TODO: Test for this
@@ -61,5 +62,10 @@ final class Types
         $types = collect($value)->map(fn ($value) => $this->determineType($value))->unique();
 
         return $types->join('|').'[]';
+    }
+
+    private function processEnum(\BackedEnum $value)
+    {
+        return join(' | ', Arr::map(array_column($value::cases(), 'value'), fn ($val) => is_string($val) ? "'$val'" : $val));
     }
 }
