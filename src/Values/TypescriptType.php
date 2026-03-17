@@ -60,9 +60,17 @@ class TypescriptType
         return $this;
     }
 
-    public static function determineName(string $class): string
+    public static function determineNamespace(string $className): string
     {
-        $class = new ReflectionClass($class);
+        $namespace = explode('\\', $className);
+        array_pop($namespace);
+
+        return implode('.', $namespace);
+    }
+
+    public static function determineName(string $className): string
+    {
+        $class = new ReflectionClass($className);
 
         return $class->getShortName().'Type';
     }

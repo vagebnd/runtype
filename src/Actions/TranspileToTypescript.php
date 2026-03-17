@@ -19,30 +19,45 @@ class TranspileToTypescript
     /** @param  Collection<TypescriptType>  $types */
     public function handle(Collection $types)
     {
-        $types->each(fn (TypescriptType $type) => $this->processType($type));
+        $lines = $this->lines;
+
+        $this->groupTypes($types)->each(function (Collection $groupedTypes, string $group) use (&$lines) {
+            $lines->push("declare namespace {$group} {");
+            $groupedTypes->each(fn (TypescriptType $type) => $this->processType($type));
+            $lines->push('}'.PHP_EOL);
+        });
 
         return $this->lines->join(PHP_EOL);
     }
 
+    /**
+     * @param  Collection<TypescriptType>  $types
+     * @return Collection<string, Collection<int, TypescriptType>>
+     */
+    private function groupTypes(Collection $types): Collection
+    {
+        return $types->mapToGroups(function (TypescriptType $type) {
+            return [TypescriptType::determineNamespace($type->getClass()) => $type];
+        });
+    }
+
     private function processType(TypescriptType $type): void
     {
-        $this->lines->push("// {$type->getClass()}");
-
         if ($type->listProperties()->isEmpty()) {
-            $this->lines->push("export type {$type->getName()} = any");
+            $this->lines->push("\texport type {$type->getName()} = any");
 
             return;
         }
 
-        $this->lines->push("export type {$type->getName()} = {");
+        $this->lines->push("\texport type {$type->getName()} = {");
 
         $type->listProperties()->each(fn (TypescriptProperty $property) => $this->processProperty($property));
 
-        $this->lines->push('}');
+        $this->lines->push("\t}");
     }
 
     private function processProperty(TypescriptProperty $property): void
     {
-        $this->lines->push("{$property->getName()}:{$property->getType()}");
+        $this->lines->push("\t\t{$property->getName()}: {$property->getType()};");
     }
 }

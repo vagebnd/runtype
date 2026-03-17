@@ -38,7 +38,7 @@ it('can convert resource collections', function () {
     $property = $processed->listProperties()->first();
 
     expect($property->getName())->toBe('data');
-    expect($property->getType())->toBe('ProductResourceType[]');
+    expect($property->getType())->toBe('Vagebond.Runtype.Tests.Fakes.Resources.ProductResourceType[]');
 });
 
 it('can convert resources that use the user bound to the request', function () {

@@ -21,11 +21,11 @@ it('can transpile to typescript', function () {
     $generated = (new TranspileToTypescript)->handle(collect([$type]));
     $lines = explode(PHP_EOL, $generated);
 
-    expect($lines)->toContain('export type ProductResourceType = {');
-    expect($lines)->toContain('}');
+    expect($lines)->toContain("\texport type ProductResourceType = {");
+    expect($lines)->toContain("\t}");
 
     $type->listProperties()->each(function (TypescriptProperty $property) use ($lines) {
-        expect($lines)->toContain("{$property->getName()}:{$property->getType()}");
+        expect($lines)->toContain("\t\t{$property->getName()}: {$property->getType()};");
     });
 });
 
@@ -35,5 +35,5 @@ it('can handle types with no properties', function () {
     $generated = (new TranspileToTypescript)->handle(collect([$type]));
     $lines = explode(PHP_EOL, $generated);
 
-    expect($lines)->toContain('export type ProductResourceType = any');
+    expect($lines)->toContain("\texport type ProductResourceType = any");
 });

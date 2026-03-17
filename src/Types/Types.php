@@ -41,8 +41,8 @@ final class Types
             is_float($value) => self::NUMBER,
             is_array($value) => $this->processArray($value),
             $value instanceof \BackedEnum => $this->processEnum($value),
-            $value instanceof ResourceCollection => TypescriptType::determineName($value->collects).'[]',
-            $value instanceof JsonResource => TypescriptType::determineName(get_class($value)),
+            $value instanceof ResourceCollection => TypescriptType::determineNamespace($value->collects).'.'.TypescriptType::determineName($value->collects).'[]',
+            $value instanceof JsonResource => TypescriptType::determineNamespace(get_class($value)).'.'.TypescriptType::determineName(get_class($value)),
             $value instanceof Arrayable => $this->processArray($value->toArray()), // TODO: Test for this
             is_object($value) => $this->processArray((array) $value),
             default => self::UNKNOWN,
