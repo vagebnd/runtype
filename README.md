@@ -9,6 +9,8 @@ Generate TypeScript interfaces from Laravel Models & Resources
 
 This resource:
 ```PHP
+namespace App\Http\Resources;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Product */
@@ -27,13 +29,15 @@ class ProductResource extends JsonResource
 }
 ```
 
-will be converted into this interface:
+will be converted into:
 
 ```typescript
-export interface ProductResourceType {
-    id: number;
-    name: string;
-    hidden?: boolean;
+declare namespace App.Http.Resources {
+    export type ProductResourceType = {
+        id: number;
+        name: string;
+        hidden?: boolean;
+    }
 }
 ```
 
