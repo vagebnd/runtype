@@ -5,6 +5,8 @@ Runtype for Laravel is a package that allows you to generate Typescript interfac
 This resource:
 
 ```php
+namespace App\Http\Resources;
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Product */
@@ -24,12 +26,14 @@ class ProductResource extends JsonResource
 
 ```
 
-will generate this Typescript interface:
+will generate this Typescript type:
 
 ```typescript
-export interface ProductResourceType {
-    id: number;
-    name: string;
-    hidden?: boolean;
+declare namespace App.Http.Resources {
+    export type ProductResourceType = {
+        id: number;
+        name: string;
+        hidden?: boolean;
+    }
 }
 ```

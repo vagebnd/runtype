@@ -49,9 +49,11 @@ We can now use the modifier in the config file:
 And now the `hidden` property will be visible in the generated type.
 
 ```typescript
-export interface ProductResourceType {
-    ...
-    hidden?: boolean;
+declare namespace App.Http.Resources {
+    export type FeatureResourceType = {
+        ...
+        hidden?: boolean;
+    }
 }
 ```
 
