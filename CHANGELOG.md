@@ -2,6 +2,55 @@
 
 All notable changes to `runtype` will be documented in this file.
 
+## Title: v1.0.0 — Namespace Grouping, Consistent Formatting & Laravel 13 Support - 2026-04-03
+
+### What's New
+
+#### Namespace Grouping
+
+Generated TypeScript types are now wrapped in `declare namespace` blocks based on their PHP namespace, preventing naming collisions and improving organization.
+
+```typescript
+declare namespace App.Http.Resources {
+    // App\Http\Resources\UserResource
+    export type UserResourceType = {
+        id: number;
+        name: string;
+        created_at: string;
+    }
+}
+
+```
+#### Consistent Formatting
+
+- Properties now use `name: type;` format with proper indentation
+- Inline object types use `{ key: type }` with spaces
+- Resource type references are fully namespace-qualified
+
+#### Resource Collection Array Types
+
+Collections returning sequential arrays (e.g., `$this->collection->map(...)`) now correctly output array types like `{ id: number }[]` instead of broken numeric property keys.
+
+#### Laravel 13 & PHP 8.5 Support
+
+- Added support for Laravel 11, 12, and 13
+- Added support for PHP 8.3, 8.4, and 8.5
+- Upgraded to Pest 4 / PHPUnit 12 compatibility
+
+#### Bug Fixes
+
+- Fixed `instanceof` error when type replacement keys are non-string
+- Fixed incorrect `Collection` type hint casing in `PersistTypescriptTypes`
+- Synced `TypescriptProperty::determineType()` with `Types::determineType()` — was missing `BackedEnum` support
+
+### Breaking Changes
+
+The output format has changed significantly. If you reference generated types in your TypeScript code, you'll need to update your imports to use the namespaced format (e.g., `App.Http.Resources.UserResourceType`).
+
+### Credits
+
+Namespace concept by @rick-bongers (#14).
+
 ## Added Enum support - 2026-01-16
 
 Added enum support by @rick-bongers.
