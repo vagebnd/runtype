@@ -12,6 +12,16 @@ it('can create a type from a resource class', function () {
     expect($type->getName())->toBe('ProductResourceType');
 });
 
+it('can determine a namespace from a class', function () {
+    expect(TypescriptType::determineNamespace(ProductResource::class))
+        ->toBe('Vagebond.Runtype.Tests.Fakes.Resources');
+});
+
+it('returns empty string for root namespace classes', function () {
+    expect(TypescriptType::determineNamespace('SomeClass'))
+        ->toBe('');
+});
+
 it('can add a property to a type', function () {
     $type = new TypescriptType(ProductResource::class);
 

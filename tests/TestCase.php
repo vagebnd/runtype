@@ -3,6 +3,7 @@
 namespace Vagebond\Runtype\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Vagebond\Runtype\RuntypeServiceProvider;
@@ -39,7 +40,7 @@ class TestCase extends Orchestra
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      * @return void
      */
     protected function defineEnvironment($app)

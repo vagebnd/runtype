@@ -16,7 +16,7 @@ class PersistTypescriptTypes
     }
 
     /** @param  Collection<TypescriptType>  $types */
-    public function handle(collection $types)
+    public function handle(Collection $types)
     {
         $this->ensureOutputFileExists();
 
