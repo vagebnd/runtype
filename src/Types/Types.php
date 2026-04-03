@@ -6,7 +6,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Vagebond\Runtype\RuntypeConfig;
 use Vagebond\Runtype\Values\TypescriptType;
 
@@ -29,7 +28,7 @@ final class Types
     public function determineType(mixed $value)
     {
         foreach ($this->config->getTypeReplacements() as $class => $replacement) {
-            if ($value instanceof $class) {
+            if (is_string($class) && $value instanceof $class) {
                 return $replacement;
             }
         }
@@ -41,8 +40,8 @@ final class Types
             is_float($value) => self::NUMBER,
             is_array($value) => $this->processArray($value),
             $value instanceof \BackedEnum => $this->processEnum($value),
-            $value instanceof ResourceCollection => TypescriptType::determineName($value->collects).'[]',
-            $value instanceof JsonResource => TypescriptType::determineName(get_class($value)),
+            $value instanceof ResourceCollection => $this->qualifiedTypeName($value->collects).'[]',
+            $value instanceof JsonResource => $this->qualifiedTypeName(get_class($value)),
             $value instanceof Arrayable => $this->processArray($value->toArray()), // TODO: Test for this
             is_object($value) => $this->processArray((array) $value),
             default => self::UNKNOWN,
@@ -53,15 +52,23 @@ final class Types
     {
         if (Arr::isAssoc($value)) {
             $result = collect($value)
-                ->mapWithKeys(fn ($value, $key) => [$key => $this->determineType($value)])
-                ->toJson();
+                ->map(fn ($v, $key) => "{$key}: {$this->determineType($v)}")
+                ->implode(', ');
 
-            return Str::replace('"', '', $result);
+            return "{ {$result} }";
         }
 
         $types = collect($value)->map(fn ($value) => $this->determineType($value))->unique();
 
-        return $types->join('|').'[]';
+        return $types->join(' | ').'[]';
+    }
+
+    private function qualifiedTypeName(string $class): string
+    {
+        $namespace = TypescriptType::determineNamespace($class);
+        $name = TypescriptType::determineName($class);
+
+        return $namespace !== '' ? "{$namespace}.{$name}" : $name;
     }
 
     private function processEnum(\BackedEnum $value)
