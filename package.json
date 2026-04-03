@@ -7,9 +7,9 @@
   "author": "Gianluca Riggio <luca@maximumawesome.nl>",
   "license": "MIT",
   "devDependencies": {
-    "sitemap": "^7.1.1",
-    "vitepress": "^1.0.2",
-    "vue": "^3.2.47"
+    "sitemap": "^8.0.0",
+    "vitepress": "^1.6.0",
+    "vue": "^3.5.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
