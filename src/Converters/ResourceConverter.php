@@ -2,7 +2,9 @@
 
 namespace Vagebond\Runtype\Converters;
 
+use Illuminate\Support\Arr;
 use ReflectionClass;
+use Vagebond\Runtype\Types\Types;
 use Vagebond\Runtype\Values\TypescriptType;
 
 class ResourceConverter extends AbstractConverter
@@ -21,9 +23,13 @@ class ResourceConverter extends AbstractConverter
             return $type;
         }
 
-        $resourceData = collect($instance->resolve($this->getRequest()));
+        $resourceData = $instance->resolve($this->getRequest());
 
-        $type = $type->addProperties($this->convertPropertiesToTypes($resourceData));
+        if (! Arr::isAssoc($resourceData)) {
+            return $type->setRawType((new Types($this->config))->determineType($resourceData));
+        }
+
+        $type = $type->addProperties($this->convertPropertiesToTypes(collect($resourceData)));
 
         return $type;
     }

@@ -10,6 +10,8 @@ class TypescriptType
     /** @var TypescriptProperty[] */
     private array $properties = [];
 
+    private ?string $rawType = null;
+
     public function __construct(
         private string $class
     ) {}
@@ -45,6 +47,18 @@ class TypescriptType
         return $this->class;
     }
 
+    public function setRawType(string $type): self
+    {
+        $this->rawType = $type;
+
+        return $this;
+    }
+
+    public function getRawType(): ?string
+    {
+        return $this->rawType;
+    }
+
     public function merge(TypescriptType $type, Collection $originalProperties): self
     {
         $newProperties = $type->listProperties()
@@ -60,9 +74,21 @@ class TypescriptType
         return $this;
     }
 
-    public static function determineName(string $class): string
+    public static function determineNamespace(string $className): string
     {
-        $class = new ReflectionClass($class);
+        $namespace = explode('\\', $className);
+        array_pop($namespace);
+
+        if (empty($namespace)) {
+            return '';
+        }
+
+        return implode('.', $namespace);
+    }
+
+    public static function determineName(string $className): string
+    {
+        $class = new ReflectionClass($className);
 
         return $class->getShortName().'Type';
     }
