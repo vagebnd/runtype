@@ -2,11 +2,12 @@
 
 namespace Vagebond\Runtype\Tests\Fakes\Factories;
 
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Vagebond\Runtype\Tests\Fakes\Models\Feature;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Model>
  */
 class FeatureFactory extends Factory
 {

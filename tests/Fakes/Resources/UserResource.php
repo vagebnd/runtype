@@ -2,16 +2,18 @@
 
 namespace Vagebond\Runtype\Tests\Fakes\Resources;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Vagebond\Runtype\Tests\Fakes\Models\User;
 
-/** @mixin \Vagebond\Runtype\Tests\Fakes\Models\User */
+/** @mixin User */
 class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @return array|Arrayable|\JsonSerializable
      */
     public function toArray(Request $request)
     {
