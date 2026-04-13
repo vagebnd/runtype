@@ -71,6 +71,9 @@ class TypescriptType
 
         $optionalProperties->each(fn ($prop) => $prop->setOptional(true));
 
+        $missingProperties = $originalProperties->filter(fn ($prop) => !$type->listProperties()->contains($prop));
+        $missingProperties->each(fn ($prop) => $prop->setOptional(true));
+
         return $this;
     }
 

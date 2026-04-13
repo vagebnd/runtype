@@ -8,7 +8,7 @@ class UnsetRelationsModifier implements Modifiable
 {
     public function modify($instance)
     {
-        if (method_exists($instance, 'unsetRelations')) {
+        if (method_exists($instance, 'unsetRelations') || method_exists($instance->resource, 'unsetRelations')) {
             $instance->unsetRelations();
         }
 
