@@ -31,6 +31,7 @@ it('can call the command', function () {
 it('can hook into the process', function () {
     $this->mock(Setup::class, function ($mock) {
         $mock->shouldReceive('before')->once();
+        $mock->shouldReceive('middle')->once();
         $mock->shouldReceive('after')->once();
     });
 

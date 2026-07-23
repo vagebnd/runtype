@@ -22,7 +22,7 @@ class Runtype
         $hooks = $this->config->getHooks();
 
         foreach ($hooks as $hook) {
-            $hook->before();
+            $hook->before($this->config);
         }
 
         $entities = (new ResolveProcessableEntities(new Finder, $this->config))->handle();
@@ -32,7 +32,7 @@ class Runtype
         (new PersistTypescriptTypes($this->config))->handle($typescriptTypes);
 
         foreach ($hooks as $hook) {
-            $hook->after();
+            $hook->after($this->config);
         }
 
         return $typescriptTypes;

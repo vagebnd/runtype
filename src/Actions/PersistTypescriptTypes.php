@@ -20,9 +20,15 @@ class PersistTypescriptTypes
     {
         $this->ensureOutputFileExists();
 
+        $content = $this->config->getLines()->join(PHP_EOL) . (new TranspileToTypescript)->handle($types);
+
+        foreach ($this->config->getHooks() as $hook) {
+            $content = $hook->middle($content);
+        }
+
         file_put_contents(
             $this->config->getOutputFile(),
-            (new TranspileToTypescript)->handle($types)
+            $content,
         );
     }
 
