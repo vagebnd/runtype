@@ -8,6 +8,7 @@ const links = []
 export default {
   title: 'RunType',
   description: 'Generate Typescript from Laravel Resources and Models',
+  head: [['script', { defer: '', src: 'https://baken.vagebond.nl/baken.js', 'data-key': '6GmEAzuG9pECEOxOtjy4ikUC' }]],
 
   cleanUrls: true,
   lastUpdated: true,
